@@ -27,9 +27,12 @@ public class  indexScreen extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if(view.equals(exit))
         {
-            finish();
-            System.exit(0);
+            moveTaskToBack(true);
+            android.os.Process.killProcess(android.os.Process.myPid());
+
             System.exit(1);
+
+
         }
         if(view.equals(start))
         {

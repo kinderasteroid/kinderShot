@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -35,6 +38,23 @@ public class MainActivity extends AppCompatActivity {
     ImageButton sendButton;
     List<Message> messageList;
     MessageAdapter messageAdapter;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if(id==R.id.backm)
+        {
+            startActivity(new Intent(this,indexScreen.class));
+        }
+        return true;
+    }
+
     public static final MediaType JSON
             = MediaType.get("application/json; charset=utf-8");
     OkHttpClient client = new OkHttpClient.Builder().readTimeout(60, TimeUnit.SECONDS).build();
@@ -49,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         welcomeTextView = findViewById(R.id.welcome_text);
         messageEditText = findViewById(R.id.message_edit_text);
         sendButton = findViewById(R.id.send_btn);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //setup recycler view
         messageAdapter = new MessageAdapter(messageList);
         recyclerView.setAdapter(messageAdapter);
