@@ -15,6 +15,10 @@
         android:theme="@style/Theme.EasyChatGPT"
         tools:targetApi="31">
         <activity
+            android:name=".About"
+            android:exported="true"
+            android:parentActivityName=".MainActivity"/>
+        <activity
             android:name=".splashScreen"
             android:exported="true" />
         <activity
@@ -22,9 +26,8 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:parentActivityName=".splashScreen"
-
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".splashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,6 +38,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -7,21 +7,15 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="972dp"
-        android:layout_height="860dp"
-        android:background="#E13535"
-        android:backgroundTint="#DDB3B3"
-        android:foregroundTint="#D13737"
-        android:tint="#00ECECEC"
-        android:tintMode="src_over"
+        android:id="@+id/imageView5"
+        android:layout_width="409dp"
+        android:layout_height="729dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/img2" />
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/linear" />
 
     <TextView
         android:id="@+id/textView"
@@ -76,5 +70,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.839" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

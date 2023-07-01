@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B3AFAF"
+    tools:context=".About">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="215dp"
+        android:layout_height="747dp"
+        android:background="#8ABD4F"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="357dp"
+        android:layout_height="633dp"
+        android:background="#F8F8F8"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="97dp"
+            android:fontFamily="monospace"
+            android:text=" About Us"
+            android:textColor="#0E91FA"
+            android:textSize="54sp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="272dp"
+            android:text="This Project was Developed as a part of Mobile Application Development Project Prescribed Under VTU. kinderShot is Totally a Developers Handcraft Which uses openai's GPT Engine.Hence Credits will go to OpenAI,Inc for giving an interactive API as an opensource. "
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="272dp"
+            android:text="Also,The Lead Developers of the Projects are Suhas S Bhandary And Shreeharan Hebbar.Who worked Imensibly for this Sucessfull Outcome.The total confidence of this project is  Enriched by Us!"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

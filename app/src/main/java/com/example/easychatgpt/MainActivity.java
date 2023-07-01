@@ -52,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
         {
             startActivity(new Intent(this,indexScreen.class));
         }
+        if(id==R.id.aboutm)
+        {
+            startActivity(new Intent(this,About.class));
+        }
         return true;
     }
 
