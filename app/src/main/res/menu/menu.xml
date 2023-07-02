@@ -7,7 +7,6 @@
     <item
         android:id="@+id/backm"
         android:title="Back" />
-    <item
-        android:id="@+id/helpm"
-        android:title="Help And Feedback" />
+    <item android:title="Rating and Feedback"
+        android:id="@+id/RAF"/>
 </menu>

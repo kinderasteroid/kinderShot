@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -31,7 +32,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class daVinci extends AppCompatActivity {
     RecyclerView recyclerView;
     TextView welcomeTextView;
     EditText messageEditText;
@@ -54,15 +55,11 @@ public class MainActivity extends AppCompatActivity {
         }
         if(id==R.id.aboutm)
         {
-
             startActivity(new Intent(this,About.class));
         }
         if(id==R.id.RAF)
         {
-            Bundle b = new Bundle();
-            b.putString("class","main");
-            startActivity(new Intent(this, feedback.class).putExtra("data",b));
-
+            startActivity(new Intent(this, feedback.class));
 
         }
         return true;
@@ -72,10 +69,11 @@ public class MainActivity extends AppCompatActivity {
             = MediaType.get("application/json; charset=utf-8");
     OkHttpClient client = new OkHttpClient.Builder().readTimeout(60, TimeUnit.SECONDS).build();
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_da_vinci);
         messageList = new ArrayList<>();
 
         recyclerView = findViewById(R.id.recycler_view);
@@ -145,15 +143,10 @@ public class MainActivity extends AppCompatActivity {
         else {
             JSONObject jsonBody = new JSONObject();
             try {
-                jsonBody.put("model", "gpt-3.5-turbo");
-                JSONArray messageArr = new JSONArray();
-                JSONObject obj = new JSONObject();
-                obj.put("role", "user");
-                obj.put("content", question);
-                messageArr.put(obj);
-                jsonBody.put("messages", messageArr);
-
-
+                jsonBody.put("model","text-davinci-003");
+                jsonBody.put("prompt",question);
+                jsonBody.put("max_tokens",4000);
+                jsonBody.put("temperature",0);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -161,48 +154,47 @@ public class MainActivity extends AppCompatActivity {
             RequestBody body = RequestBody.create(jsonBody.toString(), JSON);
             Request request = new Request.Builder()
                     .url("\n" +
-                            "https://api.openai.com/v1/chat/completions")
-                    .header("Authorization", "Bearer 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")
+                            "https://api.openai.com/v1/completions")
+                    .header("Authorization", "Bearer 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")
                     .post(body)
                     .build();
 
 
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                addResponse("Failed to load response due to "+e.getMessage());
-            }
-
-            @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-
-                if(response.isSuccessful()){
-                    JSONObject  jsonObject = null;
-                    try {
-                        jsonObject = new JSONObject(response.body().string());
-                        JSONArray jsonArray = jsonObject.getJSONArray("choices");
-
-                        String result = jsonArray.getJSONObject(0).getJSONObject("message").getString("content");
-                        addResponse(result.trim());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-
-                }else{
-                    addResponse("Failed to load response due to Error:\n"+response.body().string());
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                    addResponse("Failed to load response due to "+e.getMessage());
                 }
-            }
-        });
+
+                @Override
+                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+
+                    if(response.isSuccessful()){
+                        JSONObject  jsonObject = null;
+                        try {
+                            jsonObject = new JSONObject(response.body().string());
+                            JSONArray jsonArray = jsonObject.getJSONArray("choices");
+                            String result = jsonArray.getJSONObject(0).getString("text");
+                            addResponse(result.trim());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }else{
+                        addResponse("Failed to load response due to Error:\n"+response.body().string());
+                    }
+                }
+            });
 
 
 
 
 
-    }
+        }
 
 
-}}
+    }}
 
 
 

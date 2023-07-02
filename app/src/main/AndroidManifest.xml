@@ -15,24 +15,35 @@
         android:theme="@style/Theme.EasyChatGPT"
         tools:targetApi="31">
         <activity
+            android:name=".daVinci"
+            android:exported="false"
+            android:parentActivityName=".indexScreen"
+            />
+        <activity
+            android:name=".feedback"
+            android:exported="true" />
+        <activity
             android:name=".About"
             android:exported="true"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".splashScreen"
-            android:exported="true" />
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
         <activity
             android:name=".indexScreen"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:parentActivityName=".splashScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:parentActivityName=".splashScreen"
+            tools:ignore="IntentFilterExportedReceiver">
 
             <meta-data
                 android:name="android.app.lib_name"
