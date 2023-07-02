@@ -155,7 +155,7 @@ public class daVinci extends AppCompatActivity {
             Request request = new Request.Builder()
                     .url("\n" +
                             "https://api.openai.com/v1/completions")
-                    .header("Authorization", "Bearer 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")
+                    .header("Authorization", "Bearer <OPENAICODE>")
                     .post(body)
                     .build();
 
