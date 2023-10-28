@@ -1,2 +1,3 @@
 *.gradle linguist-detectable
 *.xml linguist-detectable
+*.json linguist-detectable
